@@ -19,6 +19,10 @@ def load(file_path):
     return dataset
 
 
+def load_single(input_line):
+    return create_corpus(input_line)
+
+
 def create_corpus(review):
     review = re.sub('[^a-zA-Z]', ' ', review)
     review = review.lower()
