@@ -24,7 +24,7 @@ def train_model(dataset):
     classifier = GaussianNB()
     classifier.fit(X_train, y_train)
 
-    joblib.dump(classifier, 'output/c2_Classifier_Sentiment_Model')
+    joblib.dump(classifier, 'output/model')
 
     y_pred = classifier.predict(X_test)
     cm = confusion_matrix(y_test, y_pred)
@@ -40,5 +40,5 @@ def __create_output_dir():
         os.makedirs(output_dir)
 
 def __save_bow(cv):
-    bow_path = 'output/c1_BoW_Sentiment_Model.pkl'
+    bow_path = 'output/bow.pkl'
     pickle.dump(cv, open(bow_path, "wb"))
