@@ -13,17 +13,13 @@ all_stopwords = stopwords.words('english')
 all_stopwords.remove('not')
 
 
-def load(file_path):
+def load_data(file_path):
     dataset = pd.read_csv(file_path, delimiter='\t', quoting=3)
-    dataset['Review'] = dataset['Review'].apply(create_corpus)
+    dataset['Review'] = dataset['Review'].apply(__create_corpus)
     return dataset
 
 
-def load_single(input_line):
-    return create_corpus(input_line)
-
-
-def create_corpus(review):
+def __create_corpus(review):
     review = re.sub('[^a-zA-Z]', ' ', review)
     review = review.lower()
     review = review.split()

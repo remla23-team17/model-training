@@ -1,3 +1,5 @@
+import os
+
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import train_test_split
@@ -13,14 +15,16 @@ def train_model(dataset):
     X = cv.fit_transform(dataset["Review"]).toarray()
     y = dataset.iloc[:, -1].values
 
-    save_bow(cv)
+    __create_output_dir()
+
+    __save_bow(cv)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
 
     classifier = GaussianNB()
     classifier.fit(X_train, y_train)
 
-    joblib.dump(classifier, 'models/c2_Classifier_Sentiment_Model')
+    joblib.dump(classifier, 'output/c2_Classifier_Sentiment_Model')
 
     y_pred = classifier.predict(X_test)
     cm = confusion_matrix(y_test, y_pred)
@@ -29,6 +33,12 @@ def train_model(dataset):
     return cm, acc
 
 
-def save_bow(cv):
-    bow_path = 'models/c1_BoW_Sentiment_Model.pkl'
+def __create_output_dir():
+    cur_directory = os.getcwd()
+    output_dir = os.path.join(cur_directory, r'output')
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+def __save_bow(cv):
+    bow_path = 'output/c1_BoW_Sentiment_Model.pkl'
     pickle.dump(cv, open(bow_path, "wb"))
