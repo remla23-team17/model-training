@@ -12,8 +12,12 @@ import pickle
 
 
 def create_json_dump(cm, acc):
+    TN, FP, FN, TP = cm.ravel()
     data = {
-        "confusion_matrix": cm.tolist(),
+        "TP_Count": int(TP),
+        "TN_Count": int(TN),
+        "FP_Count": int(FP),
+        "FN_Count": int(FN),
         "accuracy": acc
     }
 
@@ -33,7 +37,7 @@ def train_model(data):
 
     __save_bow(cv)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=1)
 
     classifier = GaussianNB()
     classifier.fit(X_train, y_train)
