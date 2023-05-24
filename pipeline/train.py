@@ -37,7 +37,7 @@ def train_model(data):
 
     __save_bow(cv)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
 
     classifier = GaussianNB()
     classifier.fit(X_train, y_train)

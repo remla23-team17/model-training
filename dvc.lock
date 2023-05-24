@@ -33,17 +33,17 @@ stages:
       md5: 5fb43a68c3ec5b122224b5fcf73aaada
       size: 31609
     - path: pipeline/train.py
-      md5: 38ef3d4b44d1f91db93368f237fe90e2
+      md5: d03fa6c3e0ebaf60ea95e64d88939707
       size: 1778
     outs:
     - path: output/bow.pkl
-      md5: 27304e379225c863c2ca3019f4889087
+      md5: 0fd31ebdff77f3ca2e0d2f6d24b5d6c5
       size: 39826
     - path: output/model
-      md5: 4cb424c8a28a71627e3785113d1955f8
+      md5: 24b1c47d8d4e0cfe490370fb7a3e470b
       size: 46215
     - path: output/performance.json
-      md5: 65304a63ffc76a220b659aa42e03c11c
+      md5: cc191d7a34d947e8675be51e68d17470
       size: 96
   test:
     cmd: python3 pipeline/test.py "data/preproccesed_FreshDump.tsv"
@@ -52,10 +52,10 @@ stages:
       md5: c32e82b06050522c3aa13b2b1b8e0b57
       size: 3472
     - path: output/bow.pkl
-      md5: 27304e379225c863c2ca3019f4889087
+      md5: 0fd31ebdff77f3ca2e0d2f6d24b5d6c5
       size: 39826
     - path: output/model
-      md5: 4cb424c8a28a71627e3785113d1955f8
+      md5: 24b1c47d8d4e0cfe490370fb7a3e470b
       size: 46215
     - path: pipeline/test.py
       md5: ecccc9403849788060523c77eafc5f9e
