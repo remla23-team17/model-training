@@ -1,6 +1,6 @@
 import os
 import sys
-
+import json
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import confusion_matrix, accuracy_score
@@ -9,6 +9,18 @@ from sklearn.naive_bayes import GaussianNB
 
 import joblib
 import pickle
+
+
+def create_json_dump(cm, acc):
+    data = {
+        "confusion_matrix": cm.tolist(),
+        "accuracy": acc
+    }
+
+    json_data = json.dumps(data)
+
+    with open("output/performance.json", "w") as f:
+        f.write(json_data)
 
 
 def train_model(data):
@@ -32,6 +44,7 @@ def train_model(data):
     cm = confusion_matrix(y_test, y_pred)
     acc = accuracy_score(y_test, y_pred)
 
+    create_json_dump(cm, acc)
     print(cm)
     print(acc)
 

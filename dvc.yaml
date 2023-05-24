@@ -23,6 +23,9 @@ stages:
     outs:
       - output/bow.pkl
       - output/model
+    metrics:
+      - output/performance.json:
+          cache: false
 
   test:
     cmd: python3 pipeline/test.py "data/preproccesed_FreshDump.tsv"
