@@ -1,3 +1,8 @@
 /config.local
 /tmp
 /cache
+.dvc
+.git
+.idea
+*.pyc
+__pycache__

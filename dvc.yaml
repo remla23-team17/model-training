@@ -1,0 +1,33 @@
+stages:
+  preprocess_train:
+    cmd: python3 pipeline/preprocess.py "data/HistoricDump.tsv"
+    deps:
+      - pipeline/preprocess.py
+      - data/HistoricDump.tsv
+    outs:
+      - data/preproccesed_HistoricDump.tsv
+
+  preprocess_test:
+    cmd: python3 pipeline/preprocess.py "data/FreshDump.tsv"
+    deps:
+      - pipeline/preprocess.py
+      - data/FreshDump.tsv
+    outs:
+      - data/preproccesed_FreshDump.tsv
+
+  train:
+    cmd: python3 pipeline/train.py "data/preproccesed_HistoricDump.tsv"
+    deps:
+      - pipeline/train.py
+      - data/preproccesed_HistoricDump.tsv
+    outs:
+      - output/bow.pkl
+      - output/model
+
+  test:
+    cmd: python3 pipeline/test.py "data/preproccesed_FreshDump.tsv"
+    deps:
+      - pipeline/test.py
+      - data/preproccesed_FreshDump.tsv
+      - output/bow.pkl
+      - output/model
