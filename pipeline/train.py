@@ -27,7 +27,7 @@ def create_json_dump(cm, acc):
         f.write(json_data)
 
 
-def train_model(data):
+def train_model(data, seed):
     cv = CountVectorizer(max_features=1420)
 
     X = cv.fit_transform(data["Review"].values.astype('U')).toarray()
@@ -37,7 +37,7 @@ def train_model(data):
 
     __save_bow(cv)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=seed)
 
     classifier = GaussianNB()
     classifier.fit(X_train, y_train)
@@ -71,5 +71,11 @@ if __name__ == "__main__":
         sys.exit(1)
 
     file_path = sys.argv[1]
+
+    if len(sys.argv) == 3:
+        input_seed = int(sys.argv[2])
+    else:
+        input_seed = 0
+
     dataset = pd.read_csv(file_path, delimiter='\t', quoting=3)
-    train_model(dataset)
+    train_model(dataset, input_seed)
