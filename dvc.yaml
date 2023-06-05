@@ -1,25 +1,25 @@
 stages:
   preprocess_train:
-    cmd: python3 pipeline/preprocess.py "data/HistoricDump.tsv"
+    cmd: python3 src/preprocess.py "data/HistoricDump.tsv"
     deps:
-      - pipeline/preprocess.py
+      - src/preprocess.py
       - data/HistoricDump.tsv
     outs:
-      - data/preproccesed_HistoricDump.tsv
+      - data/preprocessed_HistoricDump.tsv
 
   preprocess_test:
-    cmd: python3 pipeline/preprocess.py "data/FreshDump.tsv"
+    cmd: python3 src/preprocess.py "data/FreshDump.tsv"
     deps:
-      - pipeline/preprocess.py
+      - src/preprocess.py
       - data/FreshDump.tsv
     outs:
-      - data/preproccesed_FreshDump.tsv
+      - data/preprocessed_FreshDump.tsv
 
   train:
-    cmd: python3 pipeline/train.py "data/preproccesed_HistoricDump.tsv"
+    cmd: python3 src/train.py "data/preprocessed_HistoricDump.tsv"
     deps:
-      - pipeline/train.py
-      - data/preproccesed_HistoricDump.tsv
+      - src/train.py
+      - data/preprocessed_HistoricDump.tsv
     outs:
       - output/bow.pkl
       - output/model
@@ -28,9 +28,9 @@ stages:
           cache: true
 
   test:
-    cmd: python3 pipeline/test.py "data/preproccesed_FreshDump.tsv"
+    cmd: python3 src/test.py "data/preprocessed_FreshDump.tsv"
     deps:
-      - pipeline/test.py
-      - data/preproccesed_FreshDump.tsv
+      - src/test.py
+      - data/preprocessed_FreshDump.tsv
       - output/bow.pkl
       - output/model

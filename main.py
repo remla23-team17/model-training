@@ -1,11 +1,11 @@
-import pipeline.preprocess as preprocessor
-import pipeline.train as train
-import pipeline.test as test
+import src.preprocess as preprocessor
+import src.train as train
+import src.test as test
 
 
 def execute_pipeline():
     train_dataset = preprocessor.load_data('data/HistoricDump.tsv')
-    train.train_model(train_dataset)
+    train.train_model(train_dataset, 0)
 
     test_dataset = preprocessor.load_data('data/FreshDump.tsv')
     test.predict(test_dataset)

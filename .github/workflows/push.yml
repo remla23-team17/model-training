@@ -1,0 +1,30 @@
+name: Testing
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run Pytest Suite
+        run: pytest
+
+      - name: Run pylint
+        run: pylint ./src
+
+      - name: Run DS Lint
+        run: pylint --load-plugins=dslinter ./src

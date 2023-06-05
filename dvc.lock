@@ -1,43 +1,43 @@
 schema: '2.0'
 stages:
   preprocess_train:
-    cmd: python3 pipeline/preprocess.py "data/HistoricDump.tsv"
+    cmd: python3 src/preprocess.py "data/HistoricDump.tsv"
     deps:
     - path: data/HistoricDump.tsv
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
       size: 54686
-    - path: pipeline/preprocess.py
-      md5: 50da773c9e330cb0d2d6e8748c99a654
-      size: 1063
+    - path: src/preprocess.py
+      md5: 87e258112b5194a60d54b905a4ac66c3
+      size: 2154
     outs:
-    - path: data/preproccesed_HistoricDump.tsv
+    - path: data/preprocessed_HistoricDump.tsv
       md5: 5fb43a68c3ec5b122224b5fcf73aaada
       size: 31609
   preprocess_test:
-    cmd: python3 pipeline/preprocess.py "data/FreshDump.tsv"
+    cmd: python3 src/preprocess.py "data/FreshDump.tsv"
     deps:
     - path: data/FreshDump.tsv
       md5: 097c8b95f6b255e5a6a06b29d61fef8e
       size: 6504
-    - path: pipeline/preprocess.py
-      md5: 50da773c9e330cb0d2d6e8748c99a654
-      size: 1063
+    - path: src/preprocess.py
+      md5: 87e258112b5194a60d54b905a4ac66c3
+      size: 2154
     outs:
-    - path: data/preproccesed_FreshDump.tsv
+    - path: data/preprocessed_FreshDump.tsv
       md5: c32e82b06050522c3aa13b2b1b8e0b57
       size: 3472
   train:
-    cmd: python3 pipeline/train.py "data/preproccesed_HistoricDump.tsv"
+    cmd: python3 src/train.py "data/preprocessed_HistoricDump.tsv"
     deps:
-    - path: data/preproccesed_HistoricDump.tsv
+    - path: data/preprocessed_HistoricDump.tsv
       md5: 5fb43a68c3ec5b122224b5fcf73aaada
       size: 31609
-    - path: pipeline/train.py
-      md5: d03fa6c3e0ebaf60ea95e64d88939707
-      size: 1778
+    - path: src/train.py
+      md5: 3ffae1b1f882faf9ec3bab64a7e18bca
+      size: 3040
     outs:
     - path: output/bow.pkl
-      md5: 0fd31ebdff77f3ca2e0d2f6d24b5d6c5
+      md5: 06b7eb39807fa476eb78616a15e0ab0f
       size: 39826
     - path: output/model
       md5: 24b1c47d8d4e0cfe490370fb7a3e470b
@@ -46,17 +46,17 @@ stages:
       md5: cc191d7a34d947e8675be51e68d17470
       size: 96
   test:
-    cmd: python3 pipeline/test.py "data/preproccesed_FreshDump.tsv"
+    cmd: python3 src/test.py "data/preprocessed_FreshDump.tsv"
     deps:
-    - path: data/preproccesed_FreshDump.tsv
+    - path: data/preprocessed_FreshDump.tsv
       md5: c32e82b06050522c3aa13b2b1b8e0b57
       size: 3472
     - path: output/bow.pkl
-      md5: 0fd31ebdff77f3ca2e0d2f6d24b5d6c5
+      md5: 06b7eb39807fa476eb78616a15e0ab0f
       size: 39826
     - path: output/model
       md5: 24b1c47d8d4e0cfe490370fb7a3e470b
       size: 46215
-    - path: pipeline/test.py
-      md5: ecccc9403849788060523c77eafc5f9e
-      size: 604
+    - path: src/test.py
+      md5: 71ef64bc2f58f5a5fa0985c9f7c5be8c
+      size: 1339
