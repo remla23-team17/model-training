@@ -18,7 +18,10 @@ pip install -r requirements.txt
 ```
 
 ### Dataset Selection
-Datasets are included in the data folder.
+Datasets are managed via DVC. See section about DVC for more info. Pull data from dvc with
+```bash
+dvc pull
+```
 
 ### Model Training
 To train and evaluate a model on the provided data run the following command
@@ -52,6 +55,13 @@ Testing step of the pipeline can be run with
 ## 2. DVC
 ### Setup
 Setup DVC with your preferred storage setup. Run the following command to execute training pipeline
+
+### Retrieve data
+Datasets are managed via DVC. See section about DVC for more info. Pull data from dvc with
+```bash
+dvc pull
+```
+
 
 ### Test training pipeline
 Run the following command to execute training pipeline
