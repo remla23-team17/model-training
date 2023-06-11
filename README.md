@@ -69,7 +69,7 @@ To find the difference with current results use
 dvc metrics diff
 ```
 
-## 3. Pylint & DSLinter
+## 3. Code Quality
 Pylint and DSLinter configurations can be found in `.pylintrc`.
 
 ### Run pylint
@@ -82,6 +82,10 @@ pylint ./src
 pylint --load-plugins=dslinter ./src
 ```
 
+### Run MLLint
+```bash
+mllint run
+```
 
 ## 4. Pytest Suite
 Run tests from the root project folder

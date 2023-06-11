@@ -1,8 +1,9 @@
 """
 Pytest Suite for model performance
 """
-
+import random
 import pytest
+
 from src import train
 from src import preprocess
 
@@ -20,7 +21,7 @@ def fixture_preprocess_data():
     return train_dataset
 
 
-def test_train_accuracy_comparison(preprocess_data):
+def test_non_determinism_robustness(preprocess_data):
     """
     Test the accuracy comparison between two training runs.
 
@@ -29,5 +30,8 @@ def test_train_accuracy_comparison(preprocess_data):
 
     """
     _, accuracy1 = train.train_model(preprocess_data, 0)
-    _, accuracy2 = train.train_model(preprocess_data, 1)
-    assert abs(accuracy1 - accuracy2) <= 0.1
+
+    for _ in range(3):
+        random_seed_2 = random.randint(0, 100000)
+        _, accuracy2 = train.train_model(preprocess_data, random_seed_2)
+        assert abs(accuracy1 - accuracy2) <= 0.1

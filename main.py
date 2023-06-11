@@ -1,6 +1,6 @@
 import src.preprocess as preprocessor
 import src.train as train
-import src.test as test
+import src.production as model
 
 
 def execute_pipeline():
@@ -8,10 +8,10 @@ def execute_pipeline():
     train.train_model(train_dataset, 0)
 
     test_dataset = preprocessor.load_data('data/FreshDump.tsv')
-    test.predict(test_dataset)
+    model.predict(test_dataset)
 
     test_review = "Their regular toasted bread was equally satisfying with the occasional pats of butter... Mmmm..."
-    test.predict(test_review)
+    model.predict(test_review)
 
 
 if __name__ == '__main__':
