@@ -45,7 +45,7 @@ jobs:
           name: pylint-report
           path: pylint-report.txt
 
-      - name: Run dsline
+      - name: Run dslint
         run: pylint --load-plugins=dslinter ./src --output-format=text:dslinter-report.txt,colorized
 
       - name: Upload dslinter report
