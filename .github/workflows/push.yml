@@ -58,7 +58,7 @@ jobs:
         run: mllint -o mllint-report.md
 
       - name: Upload mllint report
-        uses: actions/upload-artifact@v3s
+        uses: actions/upload-artifact@v3
         with:
           name: mllint-report
           path: mllint-report.md
