@@ -19,10 +19,15 @@ pip install -r requirements.txt
 Datasets are included in the data folder.
 
 ### Model Training
-To train and evaluate a model on the provided data run the `main.py`. Individual stages on the training pipeline can be found in `/pipeline`
+To train and evaluate a model on the provided data run the following command
+
+```bash
+python3 main.py
+```
+Individual stages on the training pipeline can be found in `/pipeline`.
 
 ### Output
-All output can be found in `/output`
+All output can be found in `/output`. The folder contains the bow.pkl and the trained model, as well as a performance.json file containing several performance metrics of the training stage.
 
 ### Running individual pipeline steps
 
