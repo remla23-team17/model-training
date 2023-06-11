@@ -8,21 +8,39 @@ The repository contains the training pipeline for the sentiment app for the CS42
 - Model: https://github.com/remla23-team17/model-training/releases/latest/download/model
 
 
-## 1. Training a Model
-### Dependencies
+## 1. Model Training Pipelione
+### Install Dependencies
 Install all requirements with
 ```bash
 pip install -r requirements.txt
 ```
 
-### Dataset
+### Dataset Selection
 Datasets are included in the data folder.
 
-### Train
+### Model Training
 To train and evaluate a model on the provided data run the `main.py`. Individual stages on the training pipeline can be found in `/pipeline`
 
 ### Output
 All output can be found in `/output`
+
+### Running individual pipeline steps
+
+Preprocessing step of the pipeline can be run from the project root folder with
+```bash
+ python3 src/preprocess.py "data/HistoricDump.tsv"
+ python3 src/preprocess.py "data/FreshDump.tsv"
+```
+
+Training step of the pipeline can be run with
+```bash
+ python3 src/train.py "data/preprocessed_HistoricDump.tsv"
+```
+
+Testing step of the pipeline can be run with
+```bash
+  python3 src/test.py "data/preprocessed_FreshDump.tsv"
+```
 
 ## 2. DVC
 ### Setup
