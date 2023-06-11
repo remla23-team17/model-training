@@ -1,5 +1,12 @@
-# Model Training
+# Model Training Repository
 The repository contains the training pipeline for the sentiment app for the CS4295 Project.
+
+
+## Model Download Links:
+
+- BoW.pkl: https://github.com/remla23-team17/model-training/releases/latest/download/bow.pkl
+- Model: https://github.com/remla23-team17/model-training/releases/latest/download/model
+
 
 ## 1. Training a Model
 ### Dependencies
