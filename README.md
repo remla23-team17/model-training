@@ -1,3 +1,5 @@
+[![Testing](https://github.com/remla23-team17/model-training/actions/workflows/push.yml/badge.svg?branch=main)](https://github.com/remla23-team17/model-training/actions/workflows/push.yml)
+
 # Model Training Repository
 The repository contains the training pipeline for the sentiment app for the CS4295 Project.
 
