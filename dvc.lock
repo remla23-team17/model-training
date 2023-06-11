@@ -46,7 +46,7 @@ stages:
       md5: cc191d7a34d947e8675be51e68d17470
       size: 96
   test:
-    cmd: python3 src/test.py "data/preprocessed_FreshDump.tsv"
+    cmd: python3 src/production.py "data/preprocessed_FreshDump.tsv"
     deps:
     - path: data/preprocessed_FreshDump.tsv
       md5: c32e82b06050522c3aa13b2b1b8e0b57
@@ -57,6 +57,6 @@ stages:
     - path: output/model
       md5: 24b1c47d8d4e0cfe490370fb7a3e470b
       size: 46215
-    - path: src/test.py
+    - path: src/production.py
       md5: 71ef64bc2f58f5a5fa0985c9f7c5be8c
       size: 1339

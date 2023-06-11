@@ -28,9 +28,9 @@ stages:
           cache: false
 
   test:
-    cmd: python3 src/test.py "data/preprocessed_FreshDump.tsv"
+    cmd: python3 src/production.py "data/preprocessed_FreshDump.tsv"
     deps:
-      - src/test.py
+      - src/production.py
       - data/preprocessed_FreshDump.tsv
       - output/bow.pkl
       - output/model
