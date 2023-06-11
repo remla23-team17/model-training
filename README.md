@@ -44,11 +44,25 @@ Testing step of the pipeline can be run with
 
 ## 2. DVC
 ### Setup
-Setup DVC with your preferred storage setup. Run `dvc repro` to execute training pipeline.
+Setup DVC with your preferred storage setup. Run the following command to execute training pipeline
+
+### Test training pipeline
+Run the following command to execute training pipeline
+```bash
+dvc repro
+```
 
 ### Experiments
-To run an experiment and save the results run `dvc exp run`. To find the difference with current results use `dvc metrics diff` 
+To run an experiment and save the results run 
 
+```bash
+dvc exp run
+```
+
+To find the difference with current results use
+```bash
+dvc metrics diff
+```
 
 ## 3. Pylint & DSLinter
 Pylint and DSLinter configurations can be found in `.pylintrc`.
